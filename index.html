@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<h2>Hospitals</h2>
+<div class="row">
+  {% for h in hospitals %}
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ h.name }}</h5>
+          <p class="card-text">{{ h.address }}<br>{{ h.phone }}</p>
+          <a class="btn btn-sm btn-primary" href="{{ url_for('bp.patients') }}?hospital_id={{ h.id }}">Open</a>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <p>No hospitals yet. <a href="{{ url_for('bp.hospitals') }}">Add one</a>.</p>
+  {% endfor %}
+</div>
+{% endblock %}

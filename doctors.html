@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Doctors — {{ hospital.name }}</h3>
+<a class="btn btn-sm btn-success mb-2" href="{{ url_for('bp.add_patient', hid=hospital.id) }}">Add patient</a>
+<table class="table">
+  <thead><tr><th>#</th><th>Name</th><th>Specialty</th><th>Schedule</th><th>Age</th><th>Gender</th></tr></thead>
+  <tbody>
+    {% for d in doctors %}
+      <tr><td>{{ loop.index }}</td><td>{{ d.name }}</td><td>{{ d.specialization }}</td><td>{{ d.schedule }}</td></tr>
+    {% else %}
+      <tr><td colspan="4">No doctors</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

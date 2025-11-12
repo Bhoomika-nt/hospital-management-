@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h3><button type="submit">Book appointment</button></h3>
+<form method="post">
+  {{ form.hidden_tag() }}
+  <div class="row">
+    <div class="col-md-3">{{ form.hospital(class="form-select") }}</div>
+    <div class="col-md-3">{{ form.doctor(class="form-select") }}</div>
+    <div class="col-md-3">{{ form.patient(class="form-select") }}</div>
+    <div class="col-md-3">{{ form.when(class="form-control") }}</div>
+  </div>
+  <div class="mt-2">{{ form.submit(class="btn btn-primary") }}</div>
+</form>
+
+<h4 class="mt-4">Upcoming appointments</h4>
+<table class="table">
+  <thead><tr><th>#</th><th>Hospital</th><th>Doctor</th><th>Patient</th><th>When</th></tr></thead>
+  <tbody>
+    {% for a in appointments %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ a.hospital.name }}</td>
+        <td>{{ a.doctor.name }}</td>
+        <td>{{ a.patient.name }}</td>
+        <td>{{ a.when.time }}</td>
+      </tr>
+    {% else %}
+      <tr><td colspan="5">No appointments yet</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

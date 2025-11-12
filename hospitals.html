@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>All Hospitals</h3>
+<div class="row">
+  {% for h in hospitals %}
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5>{{ h.name }}</h5>
+          <p>{{ h.address }}<br>Phone: {{ h.phone }}</p>
+          <p>Rooms: {{ h.rooms_total }} — Booked: {{ h.rooms_booked }}</p>
+          <a class="btn btn-sm btn-outline-primary" href="{{ url_for('bp.doctors', hid=h.id) }}">Doctors</a>
+          <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('bp.schedule', hid=h.id) }}">Schedule</a>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <p>No hospitals</p>
+  {% endfor %}
+</div>
+{% endblock %}

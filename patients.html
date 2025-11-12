@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Add patient to {{ hospital.name }}</h3>
+<form method="post">
+  {{ form.hidden_tag() }}
+  <div class="mb-2">{{ form.name(class="form-control", placeholder="Full name") }}</div>
+  <div class="mb-2">{{ form.age(class="form-control", placeholder="Age") }}</div>
+  <div class="mb-2">{{ form.email(class="form-control", placeholder="Email") }}</div>
+  <div class="mb-2">{{ form.phone(class="form-control", placeholder="Phone") }}</div>
+  <div class="mb-2">{{ form.gender(class="form-control", placeholder="Gender") }}</div>
+  <div class="mb-2">{{ form.blood group(class="form-control", placeholder="Blood group") }}</div>
+  {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}
